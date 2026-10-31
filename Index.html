@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Analytics | Internship Project</title>
+<meta name="description" content="Cryptocurrency Data Analysis Internship Project featuring 200 cryptocurrencies and four Excel dashboard analyses.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#0b1120;color:#e5e7eb;line-height:1.7}
+:root{--blue:#38bdf8;--green:#34d399;--card:#151f32;--muted:#a7b2c5}
+
+nav{background:#101a2c;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;border-bottom:1px solid #293a52}
+.logo{font-size:22px;font-weight:bold;color:var(--blue)}
+nav ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--blue)}
+
+.hero{min-height:500px;padding:100px 8%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:radial-gradient(circle at top right,#164e63,transparent 40%),linear-gradient(135deg,#0b1120,#172c46)}
+.tag{color:var(--green);border:1px solid #278b70;padding:7px 18px;border-radius:30px;font-size:13px;margin-bottom:22px}
+.hero h1{font-size:clamp(32px,5vw,55px);line-height:1.2;max-width:850px;margin-bottom:22px}
+.hero h1 span{color:var(--blue)}
+.hero p{max-width:720px;color:var(--muted);font-size:17px;margin-bottom:30px}
+.btn{display:inline-block;padding:13px 25px;border-radius:7px;text-decoration:none;font-weight:bold;margin:6px;transition:.3s}
+.btn-primary{background:var(--blue);color:#07111e}
+.btn-primary:hover{background:#7dd3fc;transform:translateY(-3px)}
+.btn-outline{border:1px solid var(--blue);color:var(--blue)}
+.btn-outline:hover{background:#15324a}
+
+section{padding:75px 8%}
+.section-title{text-align:center;font-size:32px;margin-bottom:12px}
+.section-description{text-align:center;color:var(--muted);max-width:720px;margin:0 auto 40px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:0 8%;margin-top:-30px}
+.stat-card{background:var(--card);padding:25px 15px;border:1px solid #293a52;border-radius:12px;text-align:center}
+.stat-card h2{color:var(--blue);font-size:30px}
+.stat-card p{color:var(--muted);font-size:14px}
+
+.about-content{background:var(--card);padding:30px;border-radius:12px;border:1px solid #293a52}
+.about-content p{color:var(--muted);margin-bottom:15px}
+
+.analysis-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.analysis-card{background:var(--card);border:1px solid #293a52;border-radius:12px;padding:28px;transition:.3s}
+.analysis-card:hover{transform:translateY(-5px);border-color:var(--blue)}
+.analysis-icon{font-size:32px;margin-bottom:15px}
+.analysis-card h3{color:var(--blue);font-size:20px;margin-bottom:12px}
+.analysis-card p{color:var(--muted);font-size:14px;margin-bottom:15px}
+.analysis-card ul{padding-left:20px;font-size:14px}
+.analysis-card li{margin-bottom:7px}
+
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.method-card{background:var(--card);padding:22px;border-radius:10px;border:1px solid #293a52}
+.method-card h3{color:var(--green);margin-bottom:10px}
+.method-card p{color:var(--muted);font-size:14px}
+
+.tools{text-align:center}
+.tool-list{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+.tool{background:var(--card);color:var(--blue);border:1px solid #293a52;border-radius:8px;padding:12px 25px;font-weight:bold}
+
+.objectives{background:#101a2c}
+.objective-list{max-width:800px;margin:auto}
+.objective-list li{color:var(--muted);padding:10px 0}
+
+.download{text-align:center;background:linear-gradient(135deg,#12304a,#10243a);border-radius:15px;margin:30px 8%;padding:55px 20px}
+.download h2{font-size:30px;margin-bottom:15px}
+.download p{color:var(--muted);margin-bottom:20px}
+
+footer{background:#070d18;padding:30px 8%;text-align:center;border-top:1px solid #27354b}
+footer p{color:var(--muted);font-size:13px}
+
+@media(max-width:800px){
+nav{justify-content:center}
+nav ul{justify-content:center}
+.stats,.method-grid{grid-template-columns:repeat(2,1fr)}
+.analysis-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+.stats,.method-grid{grid-template-columns:1fr}
+section{padding:55px 6%}
+.hero{padding:75px 6%}
+nav ul{gap:12px}
+nav a{font-size:12px}
+.download{margin:20px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+<div class="logo">Crypto Analytics</div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#analysis">Analysis</a></li>
+<li><a href="#methodology">Methodology</a></li>
+<li><a href="#download">Download</a></li>
+</ul>
+</nav>
+
+<!-- HOME -->
+<header class="hero" id="home">
+<div class="tag">CRYPTOCURRENCY DATA ANALYSIS PROJECT</div>
+<h1>Cryptocurrency <span>Data Analysis</span> & Excel Dashboard</h1>
+<p>
+An internship project focused on analyzing cryptocurrency market data,
+identifying price movements, comparing liquidity, and generating
+investment insights using Microsoft Excel.
+</p>
+<div>
+<a href="#analysis" class="btn btn-primary">Explore Project</a>
+<a href="#download" class="btn btn-outline">Download Workbook</a>
+</div>
+</header>
+
+<!-- STATISTICS -->
+<div class="stats">
+<div class="stat-card"><h2>200</h2><p>Cryptocurrencies</p></div>
+<div class="stat-card"><h2>04</h2><p>Analysis Topics</p></div>
+<div class="stat-card"><h2>Excel</h2><p>Analysis Tool</p></div>
+<div class="stat-card"><h2>01</h2><p>Internship Project</p></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+<h2 class="section-title">About the Project</h2>
+<p class="section-description">Understanding cryptocurrency market data through structured analysis and interactive Excel dashboards.</p>
+<div class="about-content">
+<p>This project is based on cryptocurrency market data containing information about approximately 200 cryptocurrencies.</p>
+<p>The dataset includes cryptocurrency names, symbols, current prices, 1-hour percentage changes, 24-hour percentage changes, and 7-day percentage changes.</p>
+<p>Microsoft Excel is used to organize, analyze, compare, and visualize the data through PivotTables, charts, formulas, filters, and slicers.</p>
+<p>The main purpose is to understand cryptocurrency price movements, trading liquidity, and possible opportunities in different price ranges.</p>
+</div>
+</section>
+
+<!-- ANALYSIS -->
+<section id="analysis">
+<h2 class="section-title">Project Analysis</h2>
+<p class="section-description">The project consists of four major cryptocurrency data analysis topics.</p>
+
+<div class="analysis-grid">
+
+<div class="analysis-card">
+<div class="analysis-icon">📈</div>
+<h3>01. Historical Price Change Insights</h3>
+<p>This analysis studies cryptocurrency price movements over different time periods.</p>
+<ul>
+<li>Analyzes 1-hour, 24-hour and 7-day changes.</li>
+<li>Identifies cryptocurrency price movements.</li>
+<li>Filters coins within the $0–$5 price range.</li>
+<li>Compares 7-day and 24-hour changes for the top 10 coins ranked by 1-hour change.</li>
+</ul>
+</div>
+
+<div class="analysis-card">
+<div class="analysis-icon">💧</div>
+<h3>02. Top 5 Crypto Liquidity Analysis</h3>
+<p>This analysis identifies the five cryptocurrencies with the highest 24-hour trading volume.</p>
+<ul>
+<li>Uses 24-hour trading volume.</li>
+<li>Identifies the top five cryptocurrencies.</li>
+<li>Groups the remaining cryptocurrencies as Others.</li>
+<li>Uses a pie chart for visualization.</li>
+<li>Includes price-range slicers.</li>
+</ul>
+</div>
+
+<div class="analysis-card">
+<div class="analysis-icon">⚖️</div>
+<h3>03. Price Change Comparison Analysis</h3>
+<p>This analysis compares current prices with estimated previous prices using 1-hour changes.</p>
+<ul>
+<li>Calculates previous 1-hour prices.</li>
+<li>Identifies the top 10 cryptocurrencies by price change.</li>
+<li>Compares price movements.</li>
+<li>Uses price-range slicers.</li>
+<li>Displays results using charts and tables.</li>
+</ul>
+</div>
+
+<div class="analysis-card">
+<div class="analysis-icon">💰</div>
+<h3>04. Low Budget Investment Insights</h3>
+<p>This analysis focuses on cryptocurrency prices and average percentage downfall.</p>
+<ul>
+<li>Identifies the coin with the least average downfall.</li>
+<li>Calculates average downfall percentage.</li>
+<li>Displays coin name, symbol and price.</li>
+<li>Shows total coins in the selected range.</li>
+<li>Uses five price-range slicer categories.</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology">
+<h2 class="section-title">Project Methodology</h2>
+<p class="section-description">The following steps explain how the project was completed.</p>
+
+<div class="method-grid">
+<div class="method-card">
+<h3>01. Data Collection</h3>
+<p>Collected cryptocurrency market data for approximately 200 coins.</p>
+</div>
+<div class="method-card">
+<h3>02. Data Preparation</h3>
+<p>Organized the data and prepared the required columns for analysis.</p>
+</div>
+<div class="method-card">
+<h3>03. Data Analysis</h3>
+<p>Used Excel formulas, PivotTables, sorting and filtering techniques.</p>
+</div>
+<div class="method-card">
+<h3>04. Visualization</h3>
+<p>Created charts, dashboards and slicers to present the findings.</p>
+</div>
+</div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools">
+<h2 class="section-title">Tools & Technologies</h2>
+<p class="section-description">Tools used to complete this cryptocurrency data analysis project.</p>
+<div class="tool-list">
+<div class="tool">Microsoft Excel</div>
+<div class="tool">PivotTables</div>
+<div class="tool">Excel Charts</div>
+<div class="tool">Slicers</div>
+<div class="tool">Excel Formulas</div>
+<div class="tool">Cryptocurrency Market Data</div>
+</div>
+</section>
+
+<!-- OBJECTIVES -->
+<section class="objectives">
+<h2 class="section-title">Project Objectives</h2>
+<p class="section-description">Key objectives and learning outcomes of this internship project.</p>
+<ul class="objective-list">
+<li>To understand cryptocurrency market data and price movements.</li>
+<li>To analyze cryptocurrency performance over different time periods.</li>
+<li>To identify cryptocurrencies with high trading volume.</li>
+<li>To compare cryptocurrency prices and percentage changes.</li>
+<li>To generate insights using Excel dashboards and visualizations.</li>
+<li>To improve practical skills in data analysis and presentation.</li>
+</ul>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download">
+<div class="download">
+<h2>Download Excel Workbook</h2>
+<p>Explore the complete cryptocurrency data analysis and Excel dashboard.</p>
+
+<!-- Replace the filename below with your actual Excel workbook filename -->
+<a href="Crypto_Internship_Project.xlsx" download class="btn btn-primary">
+Download Excel Workbook
+</a>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>Cryptocurrency Data Analysis | Internship Project</p>
+<p>Created using Microsoft Excel and HTML & CSS</p>
+<p>© 2026 All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
