@@ -12,28 +12,27 @@ body {
   font-family: Arial, sans-serif;
   background: #f4f7fb;
   color: #18243a;
+  line-height: 1.6;
 }
 header {
   background: #101d35;
   color: white;
   padding: 25px 8%;
 }
-header h1 { margin: 0; font-size: 26px; }
-header p { color: #cbd5e1; }
-nav { margin-top: 18px; }
+header h1 { margin: 0; }
+nav { margin-top: 15px; }
 nav a {
   color: white;
   text-decoration: none;
-  margin-right: 22px;
+  margin-right: 20px;
 }
 .hero {
   background: #172b4d;
   color: white;
   text-align: center;
-  padding: 75px 20px;
+  padding: 65px 20px;
 }
-.hero h2 { font-size: 38px; margin: 0 0 15px; }
-.hero p { color: #d5deeb; line-height: 1.7; }
+.hero h2 { font-size: 36px; }
 .container {
   max-width: 1050px;
   margin: 35px auto;
@@ -49,10 +48,14 @@ nav a {
 h3 { color: #17365e; }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
   gap: 18px;
 }
-.stat { font-size: 28px; font-weight: bold; color: #1769aa; }
+.stat {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1769aa;
+}
 .button {
   display: inline-block;
   background: #1473c9;
@@ -62,8 +65,7 @@ h3 { color: #17365e; }
   text-decoration: none;
   margin-top: 12px;
 }
-.button:hover { background: #0d5598; }
-li { margin: 10px 0; }
+li { margin-bottom: 10px; }
 footer {
   text-align: center;
   padding: 25px;
@@ -79,6 +81,7 @@ footer {
   <p>Internship Project | Excel Data Analytics</p>
   <nav>
     <a href="#about">About</a>
+    <a href="#overview">Overview</a>
     <a href="#analysis">Analysis</a>
     <a href="#download">Download</a>
   </nav>
@@ -86,44 +89,43 @@ footer {
 
 <section class="hero">
   <h2>Cryptocurrency Data Analysis</h2>
-  <p>
-    An Excel-based project exploring cryptocurrency prices,
-    market changes and investment insights through data analysis
-    and visualization.
-  </p>
+  <p>Exploring cryptocurrency prices, market changes and investment insights using Microsoft Excel.</p>
   <a href="#download" class="button">Download Project</a>
 </section>
 
 <main class="container">
 
+  <!-- ABOUT PROJECT -->
   <section class="card" id="about">
     <h3>About the Project</h3>
     <p>
-      This internship project focuses on cryptocurrency data
-      analysis using Microsoft Excel. It examines price movements,
-      percentage changes and investment-related insights through
-      interactive dashboards and visualizations.
+      This internship project focuses on cryptocurrency data analysis
+      using Microsoft Excel. It explores cryptocurrency prices,
+      percentage changes and investment insights through data analysis,
+      PivotTables, charts and dashboards.
     </p>
   </section>
 
-  <section class="card">
+  <!-- PROJECT OVERVIEW -->
+  <section class="card" id="overview">
     <h3>Project Overview</h3>
     <div class="grid">
       <div>
         <p class="stat">200</p>
-        <p>Cryptocurrencies analyzed</p>
+        <p>Cryptocurrencies Analyzed</p>
       </div>
       <div>
         <p class="stat">Excel</p>
-        <p>Analysis tool</p>
+        <p>Analysis Tool</p>
       </div>
       <div>
         <p class="stat">4</p>
-        <p>Price change periods: 1h, 24h, 7d and price</p>
+        <p>Project Analysis Topics</p>
       </div>
     </div>
   </section>
 
+  <!-- ANALYSIS TOPICS -->
   <section class="card" id="analysis">
     <h3>Key Project Analyses</h3>
     <ul>
@@ -134,11 +136,12 @@ footer {
     </ul>
   </section>
 
+  <!-- DOWNLOAD EXCEL -->
   <section class="card" id="download">
     <h3>Download the Excel Project</h3>
     <p>
-      Download the complete Excel workbook containing the
-      cryptocurrency data and project worksheets.
+      Download the complete Excel workbook containing cryptocurrency
+      data, analysis and dashboard worksheets.
     </p>
     <a class="button" href="Combined.xlsx" download>
       Download Excel Workbook
@@ -153,3 +156,4 @@ footer {
 
 </body>
 </html>
+
